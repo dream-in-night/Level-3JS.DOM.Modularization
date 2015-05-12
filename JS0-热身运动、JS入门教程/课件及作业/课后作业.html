@@ -1,0 +1,279 @@
+<!DOCTYPE html >
+<html lang="en">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<title>Document</title>
+		<style>
+			/*CSS Reset*/
+			
+			body,
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6,
+			p,
+			dl,
+			dd,
+			ul,
+			ol,
+			pre,
+			form,
+			input,
+			textarea,
+			th,
+			td,
+			select {
+				margin: 0;
+				padding: 0;
+			}
+			a {
+				text-decoration: none;
+			}
+			body {
+				padding-top: 100px;
+				font-family: "Microsoft Yahei";
+			}
+			#wrap {
+				width: 730px;
+				height: 420px;
+				background: #F3F5F5;
+				margin: 0 auto;
+				position: relative;
+			}
+			strong {
+				font-size: 22px;
+			}
+			#setBox {
+				background: red;
+				width: 100px;
+				height: 40px;
+				display: inline-block;
+				vertical-align: middle;
+				line-height: 40px;
+				text-align: center;
+				color: #fff;
+				cursor: pointer;
+				font-size: 14px;
+			}
+			#box {
+				height: 100px;
+				width: 100px;
+				background: #fff;
+				border: 4px solid black;
+				margin-top: 30px;
+				margin-left: 22px;
+			}
+			#floats {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 420px;
+				background: black;
+				opacity: 0.6;
+				filter: alpha(opacity=60);
+				display: none;
+			}
+			#alert {
+				width: 260px;
+				height: 152px;
+				background: #fff;
+				border: 20px solid #9C949C;
+				position: absolute;
+				bottom: 22px;
+				right: 22px;
+				padding: 16px 20px 32px 20px;
+				z-index: 99;
+				display: none;
+			}
+			#alert p {
+				padding-bottom: 8px;
+				text-align: center;
+			}
+			#alert a {
+				display: inline-block;
+				width: 34px;
+				height: 30px;
+				vertical-align: middle;
+				margin-right: 5px;
+				color: #fff;
+				line-height: 30px;
+				font-size: 12px;
+			}
+			#background a {
+				border: 1px solid #fff;
+			}
+			#alert a:hover {
+				border: 1px solid black;
+			}
+			#redBtn {
+				background: #9CCE00;
+			}
+			#redBtn:hover {
+				background: red;
+			}
+			#yellowBtn {
+				background: #EFBD00;
+			}
+			#yellowBtn:hover {
+				background: yellow;
+				color: black;
+			}
+			#blueBtn {
+				background: #5A94EF;
+			}
+			#blueBtn:hover {
+				background: blue;
+			}
+			#width a,
+			#height a {
+				border: 1px solid #C0C0C0;
+				color: #808080;
+				font-family: Arial;
+				background: #EFEFEF;
+			}
+			#width a:hover,
+			#height a:hover {
+				border: 1px solid black;
+			}
+			#cancel,
+			#enter {
+				width: 60px;
+				height: 30px;
+				background: #002952;
+				color: #fff;
+				cursor: pointer;
+				line-height: 30px;
+				text-align: center;
+				font-size: 14px;
+				position: absolute;
+			}
+			#cancel {
+				bottom: 20px;
+				left: 88px;
+			}
+			#enter {
+				bottom: 20px;
+				right: 88px;
+			}
+		</style>
+
+		<script>
+			window.onload = function () {
+			        var oSet = document.getElementById('setBox');
+			        var oDiv = document.getElementById('box');
+			        var oWidth2 = document.getElementById('width_Num2');
+			        var owidth3 = document.getElementById('width_Num3');
+			        var owidth4 = document.getElementById('width_Num4');
+			        var oHeight2 = document.getElementById('height_Num2');
+			        var oHeight3 = document.getElementById('height_Num3');
+			        var oHeight4 = document.getElementById('height_Num4');
+			        var oRed = document.getElementById('redBtn');
+			        var oYellow = document.getElementById('yellowBtn');
+			        var oBlue = document.getElementById('blueBtn');
+			        var oEnter = document.getElementById('enter');
+			        var oCancel = document.getElementById('cancel');
+			        var oFloat = document.getElementById('floats');
+			        var oAlert = document.getElementById('alert');
+			
+			        oSet.onclick = show;
+			        oCancel.onclick = cancel;
+			        oEnter.onclick = enter;
+			
+			        oSet.onmouseover = function () {
+			            oSet.style.background = '#7FC6EE';
+			        };
+			        oSet.onmouseout = function () {
+			            oSet.style.background = 'red';
+			        };
+			
+			        oRed.onclick = function () {
+			            oDiv.style.background = 'red';
+			        };
+			        oYellow.onclick = function () {
+			            oDiv.style.background = 'yellow';
+			        };
+			        oBlue.onclick = function () {
+			            oDiv.style.background = 'blue';
+			        };
+			
+			        oWidth2.onclick = function () {
+			            oDiv.style.width = '200px';
+			        };
+			        owidth3.onclick = function () {
+			            oDiv.style.width = '300px';
+			        };
+			        owidth4.onclick = function () {
+			            oDiv.style.width = '400px';
+			        };
+			        oHeight2.onclick = function () {
+			            oDiv.style.height = '200px';
+			        };
+			        oHeight3.onclick = function () {
+			            oDiv.style.height = '300px';
+			        };
+			        oHeight4.onclick = function () {
+			            oDiv.style.height = '400px';
+			        };
+			
+			        function show() {
+			            oFloat.style.display = 'block';
+			            oAlert.style.display = 'block';
+			        }
+			
+			        function cancel() {
+			            oFloat.style.display = 'none';
+			            oAlert.style.display = 'none';
+			            oDiv.style.width = '100px';
+			            oDiv.style.height = '100px';
+			            oDiv.style.background = '#fff';
+			        }
+			
+			        function enter() {
+			            oFloat.style.display = 'none';
+			            oAlert.style.display = 'none';
+			        }
+			
+			    }
+		</script>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<strong>请问下面的DIV设置样式：</strong>
+			<span id="setBox" style="background: red;">点击设置</span>
+
+			<div id="box" style="width: 100px; height: 100px; background: rgb(255, 255, 255);"></div>
+
+			<div id="floats" style="display: none;"></div>
+
+			<div id="alert" style="display: none;">
+				<p id="background">
+					请选择背景：
+					<a id="redBtn">红</a><a id="yellowBtn">黄</a><a id="blueBtn">蓝</a>
+				</p>
+
+				<p id="width">
+					请选择宽度：
+					<a id="width_Num2">200</a><a id="width_Num3">300</a><a id="width_Num4">400</a>
+				</p>
+
+				<p id="height">
+					请选择高度：
+					<a id="height_Num2">200</a><a id="height_Num3">300</a><a id="height_Num4">400</a>
+				</p>
+
+				<div id="cancel">恢复</div>
+				<div id="enter">确定</div>
+			</div>
+		</div>
+
+	</body>
+
+</html>
+<style></style>
+<script></script>
