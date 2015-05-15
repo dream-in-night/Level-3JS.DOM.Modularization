@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>鼠标移动显示信息</title>
+		<style type="text/css">
+			* {
+				padding: 0px;
+				margin: 0px;
+			}
+			body {
+				font-family: "微软雅黑";
+				font-size: 13px;
+			}
+			#wrap {
+				margin: 100px 0px 0px 10px;
+			}
+			.title {
+				height: 40px;
+				line-height: 40px;
+				border-bottom: 1px solid #EEEEEE;
+			}
+			ul,
+			ol {
+				list-style: none;
+			}
+			#list {
+				position: relative;
+				width: 410px;
+			}
+			#list li {
+				position: relative;
+				float: left;
+				margin: 10px 10px;
+				width: 52px;
+			}
+			#list li img {
+				width: 52px;
+			}
+			#list li img,
+			#list li strong,
+			#list li span {
+				display: block;
+				text-align: center;
+			}
+			#list li strong {
+				color: 313139;
+			}
+			#list li span {
+				color: #9c9c9c;
+			}
+			.popup {
+				position: absolute;
+				right: -100px;
+				top: -45px;
+				z-index: 33;
+				width: 100px;
+				height: auto;
+				background: #DEE7EF;
+				padding: 10px;
+				display: none;
+			}
+			.popup .popup-hd h2 {
+				font-size: 15px;
+			}
+			.popup .popup-hd p {
+				color: #808080;
+			}
+		</style>
+		
+		<script type="text/javascript">
+			window.onload = function(){
+				var aUl = document.getElementById('list'),
+					oLi = aUl.getElementsByTagName('li'),
+					that =null;
+				
+				for(var i=0;i<oLi.length;i++){
+					oLi[i].onmousemove = function(){
+						that = this;
+						getDiv1();
+					}
+					oLi[i].onmouseout = function(){
+						that= this;
+						getDiv2();
+					}
+				}
+				
+				function getDiv1(){
+					that.getElementsByTagName('div')[0].style.display = 'block';
+				}
+				function getDiv2(){
+					that.getElementsByTagName('div')[0].style.display = 'none';
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<h2 class="title">最新上线</h2>
+			<ul id="list">
+				<li>
+					<img src="img/pic.png" />
+					<strong>娱乐观</strong>
+					<span>新闻类</span>
+					<div class="popup">
+						<div class="popup-hd">
+							<h2>搜狐汽图库</h2>
+							<p>生活</p>
+						</div>
+
+					</div>
+				</li>
+				<li>
+					<img src="img/pic.png" />
+					<strong>封面人物</strong>
+					<span>生活类</span>
+					<div class="popup">
+						<div class="popup-hd">
+							<h2>搜狐汽图库</h2>
+							<p>生活</p>
+						</div>
+
+					</div>
+				</li>
+				<li>
+					<img src="img/pic.png" />
+					<strong>娱乐观</strong>
+					<span>新闻类</span>
+					<div class="popup">
+						<div class="popup-hd">
+							<h2>搜狐汽图库</h2>
+							<p>生活</p>
+						</div>
+
+					</div>
+				</li>
+				<li>
+					<img src="img/pic.png" />
+					<strong>封面人物</strong>
+					<span>生活类</span>
+					<div class="popup">
+						<div class="popup-hd">
+							<h2>搜狐汽图库</h2>
+							<p>生活</p>
+						</div>
+
+					</div>
+				</li>
+				<li>
+					<img src="img/pic.png" />
+					<strong>封面人物</strong>
+					<span>生活类</span>
+					<div class="popup">
+						<div class="popup-hd">
+							<h2>搜狐汽图库</h2>
+							<p>生活</p>
+						</div>
+
+					</div>
+				</li>
+				<li>
+					<img src="img/pic.png" />
+					<strong>娱乐观</strong>
+					<span>新闻类</span>
+					<div class="popup">
+						<div class="popup-hd">
+							<h2>搜狐汽图库</h2>
+							<p>生活</p>
+						</div>
+
+					</div>
+				</li>
+				<li>
+					<img src="img/pic.png" />
+					<strong>封面人物</strong>
+					<span>生活类</span>
+					<div class="popup">
+						<div class="popup-hd">
+							<h2>搜狐汽图库</h2>
+							<p>生活</p>
+						</div>
+
+					</div>
+				</li>
+				<li>
+					<img src="img/pic.png" />
+					<strong>娱乐观</strong>
+					<span>新闻类</span>
+					<div class="popup">
+						<div class="popup-hd">
+							<h2>搜狐汽图库</h2>
+							<p>生活</p>
+						</div>
+
+					</div>
+				</li>
+				<li>
+					<img src="img/pic.png" />
+					<strong>封面人物</strong>
+					<span>生活类</span>
+					<div class="popup">
+						<div class="popup-hd">
+							<h2>搜狐汽图库</h2>
+							<p>生活</p>
+						</div>
+
+					</div>
+				</li>
+				<li>
+					<img src="img/pic.png" />
+					<strong>封面人物</strong>
+					<span>生活类</span>
+					<div class="popup">
+						<div class="popup-hd">
+							<h2>搜狐汽图库</h2>
+							<p>生活</p>
+						</div>
+
+					</div>
+				</li>
+			</ul>
+		</div>
+	</body>
+
+</html>
