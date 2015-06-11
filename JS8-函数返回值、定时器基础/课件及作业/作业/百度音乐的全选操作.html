@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)http://sandbox.runjs.cn/show/ekimqrmb -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="UTF-8">
+	<title>百度音乐的全选操作</title>
+	<style>
+		html, body, ul {
+			margin: 0;
+			padding: 0;
+		}
+		li {
+			list-style: none;
+		}
+		#songs {
+			border: 1px solid #eee;
+			width: 400px;
+			margin: 20px auto;
+			font-size: 14px;
+		}
+		#list li {
+			height: 30px;
+			line-height: 30px;
+		}
+		#toolbar {
+			border-top: 1px solid #DEDEDE;
+			border-bottom: 2px solid #424242;
+			width: 100%;
+			height: 35px;
+			line-height: 35px;
+		}
+		#toolbar li {
+			float: left;
+			width: 100px;
+			text-align: left;
+		}
+		#toolbar .button{
+			border: 1px solid #CECECE;
+			height: 20px;
+			margin: 6px 5px;
+			width: 60px;
+			line-height: 24px;
+			padding-left: 10px;
+			border-radius: 5px;
+			text-align: center;
+			opacity: 0.3;
+		}
+		#add {
+			background: url('http://sandbox.runjs.cn/uploads/rs/146/wndmqhkm/add.png') no-repeat 5px center;
+		}
+		#favorite {
+			background: url('http://sandbox.runjs.cn/uploads/rs/146/wndmqhkm/favorite.gif') no-repeat 5px center;
+		}
+		#delete {
+			background: url('http://sandbox.runjs.cn/uploads/rs/146/wndmqhkm/delete.png') no-repeat 5px center;
+		}
+		#list .title {
+			display: inline-block;
+			width: 280px;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var oList = document.getElementById('list'),
+				aLi = oList.getElementsByTagName('li'),
+				oToolbar = document.getElementById('toolbar'),
+				aBtn = oToolbar.getElementsByTagName('div'),
+				aCheckbox = oList.getElementsByTagName('input'),
+				oCheckAll = oToolbar.getElementsByTagName('input')[0],
+				flag = 0,
+				originalColor = [],
+				num;
+
+			// 设置各行底色变化
+			for(var row=0; row<aLi.length; row++){
+				if(row%2){
+					aLi[row].style.background = '#FFFFFF';
+				} else {
+					aLi[row].style.background = '#F7FFFF';
+				}
+				originalColor[row] = aLi[row].style.background;
+			}
+			
+			for(var i=0; i<aCheckbox.length; i++){
+				aCheckbox[i].index = i;
+				aCheckbox[i].onclick = function(){
+					num = this.index
+					flag = 0;
+					for(var i=0; i<aCheckbox.length; i++){
+						flag += Number(aCheckbox[i].checked);
+					}
+					
+					if(flag == aCheckbox.length){
+						oCheckAll.checked = true;
+					} else {
+						oCheckAll.checked = false;
+					}
+
+					if(!flag) {
+						for(j=0; j<aBtn.length; j++){
+							aBtn[j].style.opacity = '0.3';
+						}
+					} else {
+						for(j=0; j<aBtn.length; j++){
+							aBtn[j].style.opacity = '1';
+						}
+					}
+					if(this.checked){
+						aLi[num].style.background = '#eee';
+					} else {
+						aLi[num].style.background = originalColor[num];
+					}
+				}
+			}
+
+			for(var i=0; i<aLi.length; i++){
+				aLi[i].index = i;
+				aLi[i].onmouseover = function(){
+					this.style.background = '#eee';
+				}
+				aLi[i].onmouseout = function(){
+					if(!aCheckbox[this.index].checked){
+						this.style.background = originalColor[this.index];
+					}
+				}
+			}
+
+			oCheckAll.onclick = function(){
+				if(!this.checked){
+					for(var i=0; i<aCheckbox.length; i++){
+						aCheckbox[i].checked = false;
+						aLi[i].style.background = originalColor[i];
+					}
+					for(var i=0; i<aBtn.length; i++){
+						aBtn[i].style.opacity = '0.3';
+					}
+				} else {
+					for(var i=0; i<aCheckbox.length; i++){
+						aCheckbox[i].checked = true;
+						aLi[i].style.background = '#eee';
+					}
+					for(var i=0; i<aBtn.length; i++){
+						aBtn[i].style.opacity = '1';
+					}
+				}
+			}
+
+		}
+	</script>
+<style type="text/css"></style><style type="text/css">#yddContainer{display:block;font-family:Microsoft YaHei;position:relative;width:100%;height:100%;font-size:12px;border:1px solid #4b7598;background:#fff;}#yddTop{display:block;height:22px;cursor:move;border-bottom: 1px solid #d7e3eb; background: #e1f1fb;}#yddTopBorderlr{display:block;position:static;height:22px;line-height:22px;padding:0 28px;font-size:12px;color:#5079bb;font-weight:bold;}#yddWrapper .ydd-icon{display: inline-block; position: absolute; left: 5px; top: 2px; width: 17px; height: 17px;background:url(chrome-extension://chgkpfgnhlojjpjchjcbpbgmdnmfmmil/icon-yd-dict.png) no-repeat;}.ydd-close{display: inline-block; width: 20px; height: 22px; line-height: 22px; font-size: 16px; position: absolute; right: 0; padding-left: 4px; text-decoration: none!important; cursor: pointer;}#yddKeyTitle{float:left;text-decoration:none}#yddMiddle{display:block;margin-bottom:10px}.ydd-tabs{display:block;margin:5px 0;padding:0 5px;height:18px;border-bottom:1px solid}.ydd-tab{display:block;float:left;height:18px;margin:0 5px -1px 0;padding:0 4px;line-height:18px;border:1px solid;border-bottom:none}.ydd-trans-container{display:block;line-height:160%}.ydd-trans-container a{text-decoration:none;}#yddBottom{position:absolute;bottom:0;left:0;width:100%;height:22px;line-height:22px;overflow:hidden;background-position:left -22px}.ydd-padding010{padding:0 10px}#yddWrapper{-webkit-user-drag:element;color:#252525;z-index:10001;box-shadow: 2px 2px 4px gray;}#yddWrapper a,#yddWrapper a:hover,#yddWrapper a:visited{color:#50799b}#yddWrapper .ydd-tabs{color:#959595}.ydd-tabs,.ydd-tab{background:#fff;border-color:#d5e7f3}#yddBottom{color:#363636}#yddWrapper{min-width:250px;max-width:400px;}#ydd-voice{margin-left:2px;height:15px;width:15px}#ydd-voice object{vertical-align: top;}</style></head>
+<body>
+	<div id="songs">
+		<ul id="list">
+			<li style="background: rgb(238, 238, 238);">
+				<input type="checkbox">
+				<span class="title">私奔</span>
+				<span class="singer">梁博</span>
+			</li>
+			<li style="background: rgb(238, 238, 238);">
+				<input type="checkbox">
+				<span class="title">北京北京</span>
+				<span class="singer">梁博、黄勇</span>
+			</li>
+			<li style="background: rgb(238, 238, 238);">
+				<input type="checkbox">
+				<span class="title">我爱你中国</span>
+				<span class="singer">梁博</span>
+			</li>
+			<li style="background: rgb(238, 238, 238);">
+				<input type="checkbox">
+				<span class="title">花火</span>
+				<span class="singer">梁博</span>
+			</li>
+			<li style="background: rgb(238, 238, 238);">
+				<input type="checkbox">
+				<span class="title">回来</span>
+				<span class="singer">梁博</span>
+			</li>
+			<li style="background: rgb(238, 238, 238);">
+				<input type="checkbox">
+				<span class="title">爱要有你才完美</span>
+				<span class="singer">梁博、那英</span>
+			</li>
+		</ul>
+		<ul id="toolbar">
+			<li>
+				<input type="checkbox">全选
+			</li>
+			<li>
+				<div class="button" id="favorite" style="opacity: 1;">收藏</div>
+			</li>
+			<li>
+				<div class="button" id="add" style="opacity: 1;">添加</div>
+			</li>
+			<li>
+				<div class="button" id="delete" style="opacity: 1;">删除</div>
+			</li>
+		</ul>
+	</div>
+
+
+    	<style></style>
+	    		<script></script>
+	
+<!-- Generated by RunJS (Thu Jun 11 22:37:43 CST 2015) 2ms --></body></html>
