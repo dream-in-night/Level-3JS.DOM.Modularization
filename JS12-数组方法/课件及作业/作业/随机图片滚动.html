@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>随机图片滚动</title>
+		<style>
+			html,
+			body,
+			ul {
+				margin: 0;
+				padding: 0;
+			}
+			li {
+				list-style: none;
+			}
+			ul {
+				width: 220px;
+				margin: 50px auto;
+			}
+			li {
+				display: inline-block;
+				width: 100px;
+				height: 50px;
+				font-size: 0;
+				overflow: hidden;
+				position: relative;
+			}
+			div {
+				position: absolute;
+				top: 0px;
+				left: 0;
+			}
+		</style>
+
+		<script>
+			window.onload = function() {
+				var aLi = document.getElementsByTagName('li'),
+					flag = 0;
+				for (var i = 0; i < aLi.length; i++) {
+					fnSlide(aLi[i]);
+				}
+
+				function fnSlide(li) {
+					var oDiv = li.getElementsByTagName('div')[0];
+
+					function fnSlideOnce() {
+						setTimeout(function() {
+							flag = flag == 0 ? -50 : 0;
+							doMove(oDiv, 'top', 10, flag, fnSlideOnce);
+						}, Math.round(Math.random() * 2000 + 1000));
+					}
+					fnSlideOnce();
+				}
+			}
+		</script>
+		<script type="text/javascript" src="http://sandbox.runjs.cn/uploads/rs/146/wndmqhkm/miaov.js"></script>
+	</head>
+
+	<body>
+		<ul>
+			<li>
+				<div>
+					<img src="http://sandbox.runjs.cn/uploads/rs/146/wndmqhkm/1.png">
+					<img src="http://sandbox.runjs.cn/uploads/rs/146/wndmqhkm/2.png">
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="http://sandbox.runjs.cn/uploads/rs/146/wndmqhkm/3.png">
+					<img src="http://sandbox.runjs.cn/uploads/rs/146/wndmqhkm/4.jpg">
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="http://sandbox.runjs.cn/uploads/rs/146/wndmqhkm/5.png">
+					<img src="http://sandbox.runjs.cn/uploads/rs/146/wndmqhkm/6.png">
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="http://sandbox.runjs.cn/uploads/rs/146/wndmqhkm/7.png">
+					<img src="http://sandbox.runjs.cn/uploads/rs/146/wndmqhkm/8.png">
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="http://sandbox.runjs.cn/uploads/rs/146/wndmqhkm/9.png">
+					<img src="http://sandbox.runjs.cn/uploads/rs/146/wndmqhkm/10.png">
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="http://sandbox.runjs.cn/uploads/rs/146/wndmqhkm/11.png">
+					<img src="http://sandbox.runjs.cn/uploads/rs/146/wndmqhkm/12.png">
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="http://sandbox.runjs.cn/uploads/rs/146/wndmqhkm/13.png">
+					<img src="http://sandbox.runjs.cn/uploads/rs/146/wndmqhkm/14.png">
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="http://sandbox.runjs.cn/uploads/rs/146/wndmqhkm/1.png">
+					<img src="http://sandbox.runjs.cn/uploads/rs/146/wndmqhkm/2.png">
+				</div>
+			</li>
+		</ul>
+	</body>
+
+</html>
